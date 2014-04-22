@@ -1,1 +1,3 @@
-exportPattern("^[[:alpha:]]+")
+export(MutualInformationTwoPartitions)
+export(dataPairWiseSimilarityMatrix)
+export(generatePartitions)
