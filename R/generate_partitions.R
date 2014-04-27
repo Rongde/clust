@@ -15,32 +15,37 @@
 #' @keywords Partition
 #' @export
 #' @examples
-#'  x <- data.frame(cbind(c(1,2,2,2),c(1,1,2,2)))
-#'  df <- generatePartitions(x,"manyKmeans",3,2)
-#
+#' generate.partitions(
+#' dataset=iris[1:20,-5],
+#' algorithm="manyKmeans",
+#' number.partitions=10,
+#' number.cluster=3)
 
-generatePartitions <- function(dataset,algorithm,number.partitions,number.clusters){
-  
-  #hey this is a comment
-  
+generate.partitions <- function(dataset,
+                               algorithm,
+                               number.partitions,
+                               number.clusters)
+  {
+    
   if (algorithm=="eachFeature"){
     number.partitions <- ncol(dataset)
-    classif <- generatePartitionsEachFeature(dataset,number.partitions,number.clusters)
-    return(as.data.frame(lapply(classif,factor)))
+    classif <- generate.partition.for.each.feature(dataset,number.partitions,number.clusters)
+    return(partition.set(as.data.frame(lapply(classif,factor))))
   }
   else if (algorithm=="manyKmeans"){ 
-    classif <-generatePartitionsManyKmeans(dataset,number.partitions,number.clusters)
-    return(as.factor(as.vector(as.matrix(classif))))
+    classif <-generate.partitions.many.kmeans(dataset,number.partitions,number.clusters)
+    class(classif)
+    return(partition.set(classif))
   }
   
-  print("Unknown algorithm name in generatePartition")
+  print("Unknown algorithm name in generate.partition")
   stop()
 }
 
 #' @title Generate partitions of a given data set for each Feature
 #'
 
-generatePartitionsEachFeature <- function(dataset,number.partitions,number.clusters){
+generate.partition.for.each.feature <- function(dataset,number.partitions,number.clusters){
   classif <- data.frame(matrix(nrow=nrow(dataset), ncol=ncol(dataset)))
   for (k in 1:ncol(dataset)){
     cl <- kmeans(dataset[k],centers=number.clusters)
@@ -52,8 +57,7 @@ generatePartitionsEachFeature <- function(dataset,number.partitions,number.clust
 #' @title Generate partitions of a given data set with many kmeans
 #'
 
-
-generatePartitionsManyKmeans <- function(dataset,number.partitions,number.clusters){
+generate.partitions.many.kmeans <- function(dataset,number.partitions,number.clusters){
   classif <- data.frame(matrix(nrow=nrow(dataset), ncol=ncol(dataset)))
   for (k in 1:number.partitions){
     cl <- kmeans(dataset,centers=number.clusters)

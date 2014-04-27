@@ -1,3 +1,6 @@
 export(MutualInformationTwoPartitions)
 export(dataPairWiseSimilarityMatrix)
-export(generatePartitions)
+export(generate.partitions)
+export(partition)
+export(partition.set)
+export(visu.partition.set)

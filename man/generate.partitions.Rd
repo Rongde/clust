@@ -1,8 +1,8 @@
-\name{generatePartitions}
-\alias{generatePartitions}
+\name{generate.partitions}
+\alias{generate.partitions}
 \title{Generate partitions of a given data set}
 \usage{
-generatePartitions(dataset, algorithm, number.partitions, number.clusters)
+generate.partitions(dataset, algorithm, number.partitions, number.clusters)
 }
 \arguments{
   \item{dataset}{: the dataset for which partitions should
@@ -25,8 +25,11 @@ labels. These columns are factors
 Generate partitions of a given data set
 }
 \examples{
-x <- data.frame(cbind(c(1,2,2,2),c(1,1,2,2)))
- df <- generatePartitions(x,"manyKmeans",3,2)
+generate.partitions(
+dataset=iris[1:20,-5],
+algorithm="manyKmeans",
+number.partitions=10,
+number.cluster=3)
 }
 \author{
 M.GELGON
