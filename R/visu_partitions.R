@@ -10,7 +10,7 @@
 #' require(RColorBrewer)
 #' require(rblocks)
 #' require(plyr)
-#' a.few.partitions <- generate.partitions(iris[1:20,-5],"manyKmeans",10,3)
+#' a.few.partitions <- generate.partitions(dataset=iris[1:20,-5],algorithm="manyKmeans",number.partitions=10,number.cluster=3)
 #' visu.partition.set(a.few.partitions)
 
 # TO DO : 
