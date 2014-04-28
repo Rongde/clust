@@ -4,11 +4,13 @@
 #' should be created. 
 #' @param algorithm : a string, that specifies the technique
 #' for generating partitions :R
-#' "manyKmeans" : each partition is the result of a kmeans with
+#' \itemize{
+#' \item "manyKmeans" : each partition is the result of a kmeans with
 #' random initialization. The number of partitions is set by the user.
-#' "EachFeature" : each partition is computed on each feature 
+#' \item "EachFeature" : each partition is computed on each feature 
 #' of the dataset. The number of partitions output is the number 
 #' of features, so don't specify it when calling the function, use ",,"
+#' }
 #' @param number.partitions to be generated
 #' @param number.clusters to be created
 #' @return a dataframe containing the partitions, 

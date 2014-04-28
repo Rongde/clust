@@ -10,13 +10,13 @@ generate.partitions(dataset, algorithm, number.partitions = 2,
   be created.}
 
   \item{algorithm}{: a string, that specifies the technique
-  for generating partitions :R "manyKmeans" : each
-  partition is the result of a kmeans with random
+  for generating partitions :R \itemize{ \item "manyKmeans"
+  : each partition is the result of a kmeans with random
   initialization. The number of partitions is set by the
-  user. "EachFeature" : each partition is computed on each
-  feature of the dataset. The number of partitions output
-  is the number of features, so don't specify it when
-  calling the function, use ",,"}
+  user. \item "EachFeature" : each partition is computed on
+  each feature of the dataset. The number of partitions
+  output is the number of features, so don't specify it
+  when calling the function, use ",," }}
 
   \item{number.partitions}{to be generated}
 

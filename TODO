@@ -13,3 +13,5 @@ TODO
 - Make a R script that does all the workflow : data set, generate partitions, visualize them, compute consensus, measure its quality.
 
 - Add possibilities for generation partition from a real data set : of generating random partitions with kmeans using a random number of cluster (drawn for each partition) ; using random projections, using random subsets.
+
+- Add connection to Frederic's generator

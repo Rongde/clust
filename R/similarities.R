@@ -18,11 +18,11 @@ mutual.information.two.partitions <-function(partition1,partition2){
   
   eps = 0.001 # To avoid numerical problems 
   
-  # Contigency table between the two partitions (=co-association matrix)
+  # Contigency table between the two partitions
   t <- table(partition1$labels,partition2$labels)
   m <- as.matrix(t)
   m[m==0] <- eps # to avoid problems later on. Should be improved.
-  p.x1.x2 <- m/sum(m) # la table de co-occurrence en dimension 2
+  p.x1.x2 <- m/sum(m) 
   inverse.p.x1 <- 1/rowSums(p.x1.x2)
   inverse.p.x2 <- 1/colSums(p.x1.x2)
   log.joint.over.marginals <- log(outer(inverse.p.x1,inverse.p.x2) * p.x1.x2) # this is element-by-element product
