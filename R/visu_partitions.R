@@ -1,7 +1,5 @@
 
-library(RColorBrewer)
-library(rblocks)
-library(plyr)
+
 
 #' @title Visualize a partition set 
 #'
@@ -9,9 +7,9 @@ library(plyr)
 #' @author M.GELGON
 #' @export
 #' @examples 
-#' library(RColorBrewer)
-#' library(rblocks)
-#' library(plyr)
+#' require(RColorBrewer)
+#' require(rblocks)
+#' require(plyr)
 #' a.few.partitions <- generate.partitions(iris[1:20,-5],"manyKmeans",10,3)
 #' visu.partition.set(a.few.partitions)
 
@@ -24,7 +22,6 @@ library(plyr)
 
 visu.partition.set <- function(a.partition.set)
 {
-
   palette <- brewer.pal(4, "BuPu")
   lab <- as.list(palette)
   lev <- 1:length(palette)

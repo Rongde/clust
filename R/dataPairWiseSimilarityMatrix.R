@@ -1,6 +1,9 @@
-#' Compute the pair-wise similarity matrix between all lines of a partition matrix
-#' takes advantage of existing "daisy" function in the "cluster" package. 
-#' where "gower" distance is "number of common labels"
+library(cluster)
+
+#' @title Compute the pair-wise similarity matrix between all lines of a partition matrix
+#' @param partitions two partitions, what format ?
+#' @return a similarity matrix, no clue
+#' @author M.GELGON
 #' @export 
 
 dataPairWiseSimilarityMatrix <- function(partitions){

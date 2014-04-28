@@ -7,14 +7,14 @@
 
 #' @title Mutual information between two partitions
 #'
-#' @param partition1 
-#' @param partition2
+#' @param partition1 a partition
+#' @param partition2 a partition
 #' @return the mutual information between the input partitions
 #' @author M.GELGON
 #' @export 
 #' 
 
-MutualInformationTwoPartitions <-function(partition1,partition2){
+mutual.information.two.partitions <-function(partition1,partition2){
   
   eps = 0.001 # To avoid numerical problems 
   
@@ -33,14 +33,14 @@ MutualInformationTwoPartitions <-function(partition1,partition2){
 #' @title Normalized Mutual information between two partitions
 #' A similarity between partitions that
 #' takes values between 0 (independent) and 1 (identical)
-#' @param partition1 a first partition 
-#' @param partition2 a first partition
+#' @param partition1 a partition 
+#' @param partition2 a partition
 #' @return the normalized mutual information
 #' @author M.GELGON
 #' @export 
 
-normalizedMutualInformation <- function(partition1,partition2){
-  normalized.mutual.information <- MutualInformationTwoPartitions(partition1,partition2)/sqrt(entropyOfPartition(partition1)*entropyOfPartition(partition2))
+normalized.mutual.information <- function(partition1,partition2){
+  normalized.mutual.information <- mutual.information.two.partitions(partition1,partition2)/sqrt(entropy.of.Partition(partition1)*entropy.of.partition(partition2))
   return(normalized.mutual.information)
 }
 
@@ -52,18 +52,34 @@ normalizedMutualInformation <- function(partition1,partition2){
 #' @author M.GELGON
 #' @export 
 
-variationOfInformation <- function(partition1,partition2){
-  variation.of.information <- entropyOfPartition(partition1) + entropyOfPartition(partition2) - MutualInformationTwoPartitions(partition1,partition2)
+variation.of.information <- function(partition1,partition2){
+  variation.of.information <- entropy.of.partition(partition1) + entropy.of.partition(partition2) - mutual.information.two.partitions(partition1,partition2)
   return(variation.of.information)
 }
 
-#' @title dissimilarity
-#' evaluate dissimilarity of the "class labels vectors" 
-# associated to two data points 
-# as the number of labels that differ between the two 
 
-dataPointsSimilarity <- function(data1,data2){
-  return (length(which(data1!=data2)))  
+#' @title Entropy of a partition
+#' @param partition : input partition. Any labelling scheme will do, hopefully.
+#' @return Shannon entropy for the input partition. Not foolproof if partition is empty.
+#' @author M.GELGON
+#' @export
+
+entropy.of.partition <- function(partition){
+  populations=table(partition$labels)
+  probability.distribution=populations/sum(populations)
+  return(entropy(probability.distribution))
 }
+
+
+# Stuff below : cant remember what it was about.
+
+# #' @title dissimilarity
+# #' evaluate dissimilarity of the "class labels vectors" 
+# # associated to two data points 
+# # as the number of labels that differ between the two 
+
+# dataPointsSimilarity <- function(data1,data2){
+#  return (length(which(data1!=data2)))  
+# }
 
 
